@@ -1,15 +1,16 @@
 package com.tp2.password;
 
+import java.util.regex.Pattern;
+
 public class PasswordValidator {
-    
+
+
+    private static final Pattern RULES = Pattern.compile(
+            "^(?=.[a-z])(?=.[A-Z])(?=.\\d)(?=.[!@#$%^&*()_+\\-=\\[\\]{};:'\",.<>/?]).{8,}$"
+    );
+
     public boolean isValid(String password) {
-        // TODO: Implement password validation following TDD approach
-        // Consider these criteria:
-        // - Minimum 8 characters
-        // - At least 1 uppercase letter
-        // - At least 1 lowercase letter  
-        // - At least 1 number
-        // - At least 1 special character (!@#$%^&*()_+-=[]{}|;:,.<>?)
-        return false;
+        if (password == null) return false;
+        return RULES.matcher(password).matches();
     }
 }
