@@ -1,31 +1,22 @@
 package com.tp2.stringcalculator;
 
 public class StringCalculator {
-    
-    public int add(String numbers) {
-
-        if (numbers == null || numbers.isEmpty()) {
+    public static int suma(String numeros) {
+        if (numeros.isEmpty()) {
             return 0;
         }
 
-        numbers = numbers.replace("\n", ",");
+        numeros = numeros.replace("\n", ",");
+        String[] partes = numeros.split(",");
 
-        String[] tokens = numbers.split(",");
-        int sum = 0;
-
-        for (String token : tokens) {
-            int num = Integer.parseInt(token.trim());
-
-            if (num < 0) {
-                throw new IllegalArgumentException("Números negativos no permitidos: " + num);
+        int suma = 0;
+        for (String valor : partes) {
+            int n = Integer.valueOf(valor);
+            if (n < 0) {
+                throw new IllegalArgumentException("No se permiten números negativos");
             }
-
-            sum += num;
+            suma += n;
         }
-
-        return sum;
+        return suma;
     }
 }
-
-
-
