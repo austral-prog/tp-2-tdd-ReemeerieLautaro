@@ -25,3 +25,4 @@ class LeapYearTest {
         assertFalse(LeapYear.isLeap(2023));
     }
 }
+ 
